@@ -1,9 +1,18 @@
 #include <stdio.h>
 #include <locale.h>
 
+//poderia ter usado um void assim retirnaria o printf junto com o resultado.
+float calcularDensidadePopulacional (float populacao, float area) {
+    return populacao / area;
+}
+
+float calcularPibCapita (float  pib, float populacao) {
+    return pib / populacao;
+}
+
 int main() {
 
-    //Para formatação de texto, como acentos.
+    // Para formatação de texto, como acentos.
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
     char estado1, estado2;
@@ -74,6 +83,8 @@ int main() {
     printf("Área: %.2f \n", area1);
     printf("PIB: %.2f \n", pib1);
     printf("Número de Pontos Turísticos:: %d \n", pontos_turisticos1);
+    printf("Densidade Populacional: %.2f \n", calcularDensidadePopulacional(populacao1, area1));
+    printf("PIB per Capita:: %.2f \n", calcularPibCapita(pib1, populacao1));
 
     printf("\n");
 
@@ -85,6 +96,8 @@ int main() {
     printf("Área: %.2f \n", area2);
     printf("PIB: %.2f \n", pib2);
     printf("Número de Pontos Turísticos:: %d \n", pontos_turisticos2);
+    printf("Densidade Populacional: %.2f \n", calcularDensidadePopulacional(populacao2, area2));
+    printf("PIB per Capita:: %.2f \n", calcularPibCapita(pib2, populacao2));
 
     return 0;
 }
