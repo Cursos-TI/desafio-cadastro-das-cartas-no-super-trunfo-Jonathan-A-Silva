@@ -10,6 +10,14 @@ float calcularPibCapita (float  pib, float populacao) {
     return pib / populacao;
 }
 
+float calcularPoder(int populacao, float area, float pib, int pontos_turisticos, float pib_capita, float densidade_populacional) {
+    return populacao + area + pib + pontos_turisticos + pib_capita - densidade_populacional;
+}
+
+int compararAtributos(float comparacao1, float comparacao2) {
+    return comparacao1 > comparacao2;
+}
+
 int main() {
 
     // Para formatação de texto, como acentos.
@@ -22,6 +30,9 @@ int main() {
     float area1, area2;
     float pib1, pib2;
     int pontos_turisticos1, pontos_turisticos2;
+    float densidade_populaciona1, densidade_populaciona2;
+    float pib_capita1, pib_capita2;
+    float poder1, poder2;
 
     // Cadastro da primeira carta.
     printf("Cadastro da primeira carta\n");
@@ -46,6 +57,10 @@ int main() {
 
     printf("Digite a quantidade de pontos turísticos da cidade:\n");
     scanf(" %d", &pontos_turisticos1);
+
+    densidade_populaciona1 = calcularDensidadePopulacional(populacao1, area1);
+    pib_capita1 = calcularPibCapita(pib1, populacao1);
+    poder1 = calcularPoder(populacao1, area1, pib1, pontos_turisticos1, pib_capita1, densidade_populaciona1);
 
     printf("\n");
 
@@ -73,6 +88,10 @@ int main() {
     printf("Digite a quantidade de pontos turísticos da cidade:\n");
     scanf(" %i", &pontos_turisticos2);
 
+    densidade_populaciona2 = calcularDensidadePopulacional(populacao2, area2);
+    pib_capita2 = calcularPibCapita(pib2, populacao2);
+    poder2 = calcularPoder(populacao2, area2, pib2, pontos_turisticos2, pib_capita2, densidade_populaciona2);
+
     printf("\n");
 
     printf("Carta: 1 \n");
@@ -83,8 +102,9 @@ int main() {
     printf("Área: %.2f \n", area1);
     printf("PIB: %.2f \n", pib1);
     printf("Número de Pontos Turísticos:: %d \n", pontos_turisticos1);
-    printf("Densidade Populacional: %.2f \n", calcularDensidadePopulacional(populacao1, area1));
-    printf("PIB per Capita:: %.2f \n", calcularPibCapita(pib1, populacao1));
+    printf("Densidade Populacional: %.2f \n", densidade_populaciona1);
+    printf("PIB per Capita: %.2f \n", pib_capita1);
+    printf("Poder: %.2f \n", poder1);
 
     printf("\n");
 
@@ -95,9 +115,21 @@ int main() {
     printf("População: %d \n", populacao2);
     printf("Área: %.2f \n", area2);
     printf("PIB: %.2f \n", pib2);
-    printf("Número de Pontos Turísticos:: %d \n", pontos_turisticos2);
-    printf("Densidade Populacional: %.2f \n", calcularDensidadePopulacional(populacao2, area2));
-    printf("PIB per Capita:: %.2f \n", calcularPibCapita(pib2, populacao2));
+    printf("Densidade Populacional: %.2f \n", densidade_populaciona2);
+    printf("PIB per Capita: %.2f \n", pib_capita2);
+    printf("Poder: %.2f \n", poder2);
+
+    printf("\n");
+
+    printf("Comparação de Cartas \n");
+    printf("População: %d \n", compararAtributos(populacao1, populacao2));
+    printf("Área: %d \n", compararAtributos(area1, area2));
+    printf("PIB: %d \n", compararAtributos(pib1, pib2));
+    printf("Pontos Turísticos: %d \n", compararAtributos(pontos_turisticos1, pontos_turisticos2));
+    printf("Densidade Populacional: %d \n", compararAtributos(densidade_populaciona1, densidade_populaciona2));
+    printf("PIB: %d \n", compararAtributos(pib1, pib2));
+    printf("PIB per Capita: %d \n", compararAtributos(pib_capita1, pib_capita2));
+    printf("Super Poder: %d \n", compararAtributos(poder1, poder2));
 
     return 0;
 }
